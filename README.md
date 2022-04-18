@@ -1,5 +1,6 @@
-# This project is retired, archived, and no longer supported. You are welcome to continue to use and fork the repository.
+[![Build Status](https://dev.azure.com/MITREZOHAIR/Lab_1_unlmtd/_apis/build/status/ZohairMITRE.ContosoAir?branchName=master)](https://dev.azure.com/MITREZOHAIR/Lab_1_unlmtd/_build/latest?definitionId=3&branchName=master)
 
+# This project is retired, archived, and no longer supported. You are welcome to continue to use and fork the repository.
 
 # Microsoft.Github CI Demo
 
@@ -8,8 +9,8 @@ Runs a nodejs server (Express v4.16) that stores customer booked flights in a Co
 
 ## Requirements
 
-* Node v8.9.4 or later
-* Azure CosmosDb
+- Node v8.9.4 or later
+- Azure CosmosDb
 
 ## Local Environment Setup
 
@@ -31,16 +32,16 @@ This will run locally the server and attach to the CosmosDb Endpoint using mongo
 
 In order to create the Azure deploy there is an ARM template located at deployment folder.
 
-ARM template parameter | Usage | e.g.
---- | --- | ---
-p_environment | set an environment suffix | `dev`
-p_site_prefix | common prefix for all resources created | `contoso-air`
-p_site_web_name | website specific resource name | `web`
-p_comosdb_name | database specific resource name | `db`
+| ARM template parameter | Usage                                   | e.g.          |
+| ---------------------- | --------------------------------------- | ------------- |
+| p_environment          | set an environment suffix               | `dev`         |
+| p_site_prefix          | common prefix for all resources created | `contoso-air` |
+| p_site_web_name        | website specific resource name          | `web`         |
+| p_comosdb_name         | database specific resource name         | `db`          |
 
 > e.g. previous parameter examples will create resources `contoso-air-db-dev` and `contoso-air-db-dev`.
 
-Then you run the ARM template with the following commands ([Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) required): 
+Then you run the ARM template with the following commands ([Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) required):
 
 ```bash
 cd deployment
@@ -54,9 +55,10 @@ What's left is to compress the whole folder in a zip file and upload it to Azure
 ## Azure VSTS Deployment
 
 ### Build process tasks
+
 - [Copy Files](https://go.microsoft.com/fwlink/?LinkID=708389)
   - Source Folder: deployment
-  - Contents: *.json
+  - Contents: \*.json
   - Target Folder: $(build.artifactstagingdirectory)/Templates
 - [npm](https://go.microsoft.com/fwlink/?LinkID=613746)
   - Command: custom
@@ -67,6 +69,7 @@ What's left is to compress the whole folder in a zip file and upload it to Azure
 - [Publish Artifact](https://go.microsoft.com/fwlink/?LinkID=708390)
 
 ### Release process tasks:
+
 - [Azure Resource Group Deployment](https://aka.ms/argtaskreadme)
   - Template: select from the artifact in the Templates folder.
   - Template Parameters: same as previous parameter.
@@ -76,7 +79,7 @@ What's left is to compress the whole folder in a zip file and upload it to Azure
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
